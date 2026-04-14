@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Harsh | Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>Harsh</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <h2>I am <span class="typing"></span></h2>
+  <p>B.Tech CSE Student | MRIIRS</p>
+</section>
+
+<section id="about">
+  <h2>About Me</h2>
+  <p>Hi, I'm Harsh, a first-year B.Tech CSE student passionate about technology and development.</p>
+</section>
+
+<section id="skills">
+  <h2>My Skills</h2>
+  <div class="skills">
+    <div>HTML</div>
+    <div>CSS</div>
+    <div>JavaScript</div>
+    <div>C++</div>
+    <div>SQL</div>
+    <div>Tableau</div>
+    <div>Arduino</div>
+    <div>Raspberry Pi Pico</div>
+    <div>Leadership</div>
+    <div>Time Management</div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <p>Phone: 7895511990</p>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+/* ================= CSS ================= */
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  background: rgba(0,0,0,0.7);
+  position: fixed;
+  width: 100%;
+}
+
+nav a {
+  margin: 0 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center/cover;
+}
+
+.typing {
+  color: cyan;
+  font-weight: bold;
+}
+
+section {
+  padding: 100px 20px;
+}
+
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+  gap: 15px;
+}
+
+.skills div {
+  background: #1e293b;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.skills div:hover {
+  background: cyan;
+  color: black;
+}
+</style>
+
+/* ================= JS ================= */
+
+<script>
+const words = ["Web Developer", "Programmer", "Tech Enthusiast"];
+let i = 0;
+let j = 0;
+let currentWord = "";
+let isDeleting = false;
+
+function type() {
+  currentWord = words[i];
+  if (isDeleting) {
+    j--;
+  } else {
+    j++;
+  }
+
+  document.querySelector(".typing").textContent = currentWord.substring(0, j);
+
+  if (!isDeleting && j === currentWord.length) {
+    isDeleting = true;
+    setTimeout(type, 1000);
+    return;
+  }
+
+  if (isDeleting && j === 0) {
+    isDeleting = false;
+    i = (i + 1) % words.length;
+  }
+
+  setTimeout(type, isDeleting ? 50 : 100);
+}
+
+type();
+</script>
