@@ -5,6 +5,124 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Harsh | Portfolio</title>
   <link rel="stylesheet" href="style.css">
+
+  <style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: white;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(0,0,0,0.7);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+  }
+
+  nav {
+    display: flex;
+    gap: 15px;
+  }
+
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center/cover;
+  }
+
+  .hero h2 {
+    font-size: 32px;
+  }
+
+  .typing {
+    color: cyan;
+    font-weight: bold;
+  }
+
+  section {
+    padding: 100px 20px;
+  }
+
+  .skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+    gap: 15px;
+  }
+
+  .skills div {
+    background: #1e293b;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.3s;
+    font-size: 14px;
+  }
+
+  .skills div:hover {
+    background: cyan;
+    color: black;
+  }
+
+  /* 🔥 Responsive Design */
+
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    nav {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .hero h2 {
+      font-size: 24px;
+    }
+
+    section {
+      padding: 80px 15px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero h2 {
+      font-size: 20px;
+    }
+
+    .skills {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav a {
+      font-size: 12px;
+    }
+  }
+
+  </style>
 </head>
 <body>
 
@@ -49,75 +167,6 @@
   <p>Phone: 7895511990</p>
 </section>
 
-<script src="script.js"></script>
-</body>
-</html>
-
-/* ================= CSS ================= */
-
-<style>
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f172a;
-  color: white;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 20px;
-  background: rgba(0,0,0,0.7);
-  position: fixed;
-  width: 100%;
-}
-
-nav a {
-  margin: 0 10px;
-  color: white;
-  text-decoration: none;
-}
-
-.hero {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: url('https://images.unsplash.com/photo-1518770660439-4636190af475') no-repeat center/cover;
-}
-
-.typing {
-  color: cyan;
-  font-weight: bold;
-}
-
-section {
-  padding: 100px 20px;
-}
-
-.skills {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
-  gap: 15px;
-}
-
-.skills div {
-  background: #1e293b;
-  padding: 15px;
-  text-align: center;
-  border-radius: 10px;
-  transition: 0.3s;
-}
-
-.skills div:hover {
-  background: cyan;
-  color: black;
-}
-</style>
-
-/* ================= JS ================= */
-
 <script>
 const words = ["Web Developer", "Programmer", "Tech Enthusiast"];
 let i = 0;
@@ -127,11 +176,7 @@ let isDeleting = false;
 
 function type() {
   currentWord = words[i];
-  if (isDeleting) {
-    j--;
-  } else {
-    j++;
-  }
+  if (isDeleting) j--; else j++;
 
   document.querySelector(".typing").textContent = currentWord.substring(0, j);
 
@@ -151,3 +196,6 @@ function type() {
 
 type();
 </script>
+
+</body>
+</html>
